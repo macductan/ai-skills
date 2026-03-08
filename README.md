@@ -15,6 +15,8 @@ ai-skills/
 ├── skills/
 │   ├── code-reviewer-skill/
 │   │   └── SKILL.md      # Skill defining the Senior Code Reviewer persona
+│   ├── init-memory-bank/
+│   │   └── SKILL.md      # Skill to initialize a Memory Bank for any project
 │   └── solution-architect/
 │       └── SKILL.md      # Skill defining the Solution Architect & Senior SWE persona
 ├── README.md
@@ -43,7 +45,22 @@ This skill enforces a robust 5-step development loop, managed via short commands
 4. **`discuss`**: A sync point. Parses human feedback and inline discussions, adjusting the task scope or converting items into bugs.
 5. **`run`**: Executes the approved implementation, tracking progress state.
 
-### 2. Code Reviewer + Senior Software Engineer
+### 2. Init Memory Bank
+
+**Path:** `skills/init-memory-bank/SKILL.md`
+
+This skill instructs the AI to act as a System Architect that scans your entire project, analyzes configuration files and source code, and automatically generates a structured **Memory Bank** — a set of markdown files that capture the project's context, tech stack, architecture patterns, and current state.
+
+#### Generated Files
+
+- `memory-bank/projectbrief.md` — Project summary and core objectives.
+- `memory-bank/techContext.md` — Tech stack, key libraries, and environment setup.
+- `memory-bank/systemPatterns.md` — Architecture patterns and coding principles.
+- `memory-bank/activeContext.md` — Current codebase state and in-progress work.
+
+The skill presents an Implementation Plan for approval before writing any files.
+
+### 3. Code Reviewer + Senior Software Engineer
 
 **Path:** `skills/code-reviewer-skill/SKILL.md`
 
@@ -65,6 +82,9 @@ You can install these skills directly into your project using the `npx skills` c
 ```bash
 # Install the Solution Architect skill
 npx skills add https://github.com/macductan/ai-skills --skill solution-architect
+
+# Install the Init Memory Bank skill
+npx skills add https://github.com/macductan/ai-skills --skill init-memory-bank
 
 # Install the Code Reviewer skill
 npx skills add https://github.com/macductan/ai-skills --skill code-reviewer-skill
