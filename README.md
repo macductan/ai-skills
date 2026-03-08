@@ -13,6 +13,8 @@ A comprehensive repository of custom AI skills, prompts, workflows, and system r
 ```text
 ai-skills/
 ├── skills/
+│   ├── code-reviewer-skill/
+│   │   └── SKILL.md      # Skill defining the Senior Code Reviewer persona
 │   └── solution-architect/
 │       └── SKILL.md      # Skill defining the Solution Architect & Senior SWE persona
 ├── README.md
@@ -41,11 +43,38 @@ This skill enforces a robust 5-step development loop, managed via short commands
 4. **`discuss`**: A sync point. Parses human feedback and inline discussions, adjusting the task scope or converting items into bugs.
 5. **`run`**: Executes the approved implementation, tracking progress state.
 
+### 2. Code Reviewer + Senior Software Engineer
+
+**Path:** `skills/code-reviewer-skill/SKILL.md`
+
+This skill instructs the AI to adopt the persona of a Senior Code Reviewer with 20+ years of experience. It focuses on scrutinizing code, catching bugs, optimizing performance, and protecting codebase quality against 6 pillars: Efficiency, Readability, Maintainability, Security, Bugs & Edge Cases, and Best Practices.
+
+#### 🔄 The 4-Step Code Review Workflow
+
+This skill enforces a step-by-step code review and fix loop:
+
+1. **`diff`**: Gathers git changes compared to the main branch and saves them to a raw diff file.
+2. **`audit`**: Analyzes the diff based on the 6 evaluation pillars and generates a detailed review report.
+3. **`discuss`**: Reads user feedback on the report, responding inline or updating the status of issues (e.g., to "Needs Auto-Fix" or "Ignored").
+4. **`fix`**: Automatically goes into the source code and applies finalized fixes for approved issues.
+
 ## 🛠 Usage
+
+You can install these skills directly into your project using the `npx skills` command:
+
+```bash
+# Install the Solution Architect skill
+npx skills add https://github.com/macductan/ai-skills --skill solution-architect
+
+# Install the Code Reviewer skill
+npx skills add https://github.com/macductan/ai-skills --skill code-reviewer-skill
+```
+
+Alternatively, you can manually clone and integrate them:
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/ai-skills.git
+   git clone https://github.com/macductan/ai-skills.git
    ```
 2. **Integrate into your AI Agent Workspace**:
    Depending on your specific AI tool, install or copy the `skills` folder into your working project or agent's system directory (e.g., `.agents/skills/` or similar configuration folders).
